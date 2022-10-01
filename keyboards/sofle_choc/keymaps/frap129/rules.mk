@@ -2,9 +2,6 @@ ENCODER_ENABLE = yes
 
 OLED_ENABLE = yes
 
-# Enable per-key lighting
-RGB_MATRIX_ENABLE = yes
-
 # Enable audio keys and system control
 EXTRAKEY_ENABLE = yes
 

@@ -300,16 +300,18 @@ static void print_status_narrow(void) {
     oled_write_ln_P(PSTR("SofleChoc _____"), false);
 
     if (get_highest_layer(layer_state) == _ADJUST) {
+#ifdef RGB_MATRIX_ENABLE
         uint8_t mode  = rgb_matrix_get_mode();
         HSV     hsv   = rgb_matrix_get_hsv();
         uint8_t speed = rgb_matrix_get_speed();
-
+#endif
         if (keymap_config.swap_lctl_lgui) {
             oled_write_ln_P(PSTR("MAC\n"), false);
         } else {
             oled_write_ln_P(PSTR("WIN\n"), false);
         }
 
+#ifdef RGB_MATRIX_ENABLE
         oled_write_ln("RGB", false);
         write_int_ln(PSTR("Mo"), mode);
         write_int_ln(PSTR("H "), hsv.h);
@@ -317,6 +319,7 @@ static void print_status_narrow(void) {
         write_int_ln(PSTR("V "), hsv.v);
         write_int_ln(PSTR("Sp"), speed);
         oled_write_P(PSTR("\n\n\n"), false);
+#endif
     } else {
         oled_write_P(PSTR("\n\n\n\n\n\n\n\n\n"), false);
         led_t led_usb_state = host_keyboard_led_state();
